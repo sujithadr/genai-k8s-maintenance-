@@ -1,4 +1,4 @@
-# Gen AI SDLC - Kubernetes Maintenance PoC
+# GenAI Kubernetes Maintenance 
 
 This repository provides a **Proof of Concept (PoC)** for using **K8sGPT** in a **Gen AI-powered software development lifecycle (SDLC) maintenance** workflow. The PoC demonstrates how to identify and troubleshoot Kubernetes issues using AI-powered analysis.
 
