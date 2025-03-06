@@ -85,15 +85,19 @@ metadata:
   name: broken-pod
   namespace: default
 spec:
+  securityContext:
+    runAsUser: 99999  # Invalid user ID
   containers:
-    - name: broken-pod
-      image: nginx:1.a.b.c  # Invalid image
-      livenessProbe:
-        httpGet:
-          path: /
-          port: 81  # Incorrect port
-        initialDelaySeconds: 3
-        periodSeconds: 3
+    - name: broken-container
+      image: nginx:latest
+      securityContext:
+        privileged: true  # Overly permissive setting
+      volumeMounts:
+        - mountPath: "/data"
+          name: missing-volume  # This volume does not exist
+  volumes:
+    - name: existing-volume  # Incorrect volume reference
+      emptyDir: {}
 ```
 
 Apply the configuration:
